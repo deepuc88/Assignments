@@ -9,7 +9,7 @@ let bonus: number = 0;
 let hike: number = 0;
 let reward: number = 5000;
 let percentage: number = 0;
-let hikePercentage = new Map();
+let hikePercentage: Map<string, number> = new Map();
 
 
 for (let i = 0; i < employeeName.length; i++) {
@@ -17,29 +17,32 @@ for (let i = 0; i < employeeName.length; i++) {
     if (rating[i] >= 4.0) {
         variablePay = (baseSalary[i] * 15.0) / 100;
         bonus = 1500;
+        console.log(`Employee ${employeeName[i]} base salary : ${baseSalary[i]}`)
         console.log(`Employee ${employeeName[i]} variable pay : ${variablePay}`)
     }
     else if (rating[i] >= 3.0) {
         variablePay = (baseSalary[i] * 10.0) / 100;
         bonus = 1200;
+        console.log(`Employee ${employeeName[i]} base salary : ${baseSalary[i]}`)
         console.log(`Employee ${employeeName[i]} variable pay : ${variablePay}`)
     }
     else {
         variablePay = (baseSalary[i] * 3.0) / 100;
         bonus = 300;
+        console.log(`Employee ${employeeName[i]} base salary : ${baseSalary[i]}`)
         console.log(`Employee ${employeeName[i]} variable pay : ${variablePay}`)
     }
 
     if (experience[i] >= 5) {
-        hike = baseSalary[i] + variablePay + bonus + reward
+        hike = variablePay + bonus + reward
         console.log(`New salary of ${employeeName[i]} : ${hike} (Reward 5000 added)`)
     }
     else {
-        hike = baseSalary[i] + variablePay + bonus
+        hike = variablePay + bonus
         console.log(`New salary of ${employeeName[i]} : ${hike}`)
     }
 
-    percentage = hike / baseSalary[i]
+    percentage = (hike / baseSalary[i]) * 100
 
     hikePercentage.set(employeeName[i], percentage)
     //console.log(`Employee hike percentage`)
